@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Mezzi Militari - Dettagli Tecnici</title>
+
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f4f4f4; text-align: center; margin: 0; padding-bottom: 50px; }
+
+        nav { background: #1b1b1b; padding: 15px; position: sticky; top: 0; z-index: 1000; }
+        nav a { color: #d4af37; margin: 15px; text-decoration: none; font-weight: bold; transition: 0.3s; }
+        nav a:hover { color: white; }
+
+        h1 { color: #2f4f2f; margin-top: 30px; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* Container principale per la griglia */
+        .griglia-mezzi {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        /* Card del singolo mezzo */
+        .mezzo-card {
+            background: white;
+            width: 350px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+        .mezzo-card:hover { transform: translateY(-5px); }
+
+        .mezzo-card h3 {
+            background: #2f4f2f;
+            color: white;
+            margin: 0;
+            padding: 15px;
+        }
+
+        .mezzo-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            cursor: pointer;
+            border-bottom: 5px solid transparent;
+            transition: 0.3s;
+        }
+
+        /* Descrizione tecnica */
+        .info-tecnica {
+            padding: 20px;
+            text-align: left;
+            font-size: 0.95em;
+            line-height: 1.5;
+            color: #444;
+        }
+
+        .info-tecnica ul {
+            padding-left: 20px;
+            margin-top: 10px;
+            color: #666;
+        }
+
+        .badge-info {
+            display: inline-block;
+            background: #e0e0e0;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.8em;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="potenze.html">Potenze</a>
+    <a href="mezzi.html">Mezzi</a>
+    <a href="tattiche.html">Tattiche</a>
+    <a href="contatti.html">Contatti</a>
+</nav>
+
+<h1>Catalogo Mezzi Militari</h1>
+<p>Seleziona un'immagine per evidenziare il mezzo e consulta le specifiche tecniche.</p>
+
+<div class="griglia-mezzi">
+
+    <div class="mezzo-card">
+        <h3>Jet Militari (F-35)</h3>
+        <img src="https://www.ansa.it/webimages/news_base/2022/11/22/11c974c4c25e1dc4fd4a656bfc6dec8c.jpg" onclick="evidenzia(this)">
+        <div class="info-tecnica">
+            <span class="badge-info">Dominio Aereo</span>
+            <p>I caccia di quinta generazione sono dotati di tecnologia <strong>Stealth</strong>, che li rende quasi invisibili ai radar nemici.</p>
+            <ul>
+                <li><strong>Velocità:</strong> Mach 1.6</li>
+                <li><strong>Ruolo:</strong> Multiruolo / Attacco al suolo</li>
+                <li><strong>Tecnologia:</strong> Sensori integrati a 360°</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="mezzo-card">
+        <h3>Cacciatorpediniere</h3>
+        <img src="https://formiche.net/wp-content/blogs.dir/10051/files/2018/08/cacciatorpediniere.jpg" onclick="evidenzia(this)">
+        <div class="info-tecnica">
+            <span class="badge-info">Forza Navale</span>
+            <p>Unità veloci e manovrabili, progettate per scortare navi più grandi e difendere la flotta da attacchi sottomarini e aerei.</p>
+            <ul>
+                <li><strong>Armamento:</strong> Missili guidati e cannoni</li>
+                <li><strong>Radar:</strong> Sistemi AEGIS avanzati</li>
+                <li><strong>Autonomia:</strong> Oltre 4000 miglia nautiche</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="mezzo-card">
+        <h3>Carri Armati (M1 Abrams)</h3>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Leopard_2_A5_der_Bundeswehr.jpg" onclick="evidenzia(this)">
+        <div class="info-tecnica">
+            <span class="badge-info">Potenza Terrestre</span>
+            <p>Il pilastro della guerra terrestre, combinazione perfetta di protezione corazzata, mobilità e potenza di fuoco pesante.</p>
+            <ul>
+                <li><strong>Cannone:</strong> 120mm a canna liscia</li>
+                <li><strong>Difesa:</strong> Corazza composita reattiva</li>
+                <li><strong>Motore:</strong> Turbina a gas da 1500 hp</li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<script>
+function evidenzia(img) {
+    // Reset bordi di tutte le immagini
+    let immagini = document.querySelectorAll("img");
+    immagini.forEach(i => i.style.borderBottom = "5px solid transparent");
+    
+    // Evidenzia quella cliccata con un bordo inferiore rosso
+    img.style.borderBottom = "5px solid red";
+}
+</script>
+
+</body>
+</html>
