@@ -5,61 +5,172 @@
 <title>Analisi Potenze Militari 2026</title>
 
 <style>
-    body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f2f0; margin: 0; color: #333; }
-
-    nav { background: #1b1b1b; padding: 15px; text-align: center; position: sticky; top: 0; z-index: 1000; }
-    nav a { color: #d4af37; margin: 15px; text-decoration: none; font-weight: bold; transition: 0.3s; }
-    nav a:hover { color: white; }
-
-    h1 { text-align: center; color: #2f4f2f; margin-top: 40px; text-transform: uppercase; letter-spacing: 1px; }
-    .subtitle { text-align: center; color: #666; margin-bottom: 40px; }
-
-    .card {
-        background: white;
-        margin: 20px auto;
-        padding: 25px;
-        width: 75%;
-        border-radius: 12px;
-        border-left: 8px solid #2f4f2f;
-        display: flex;
-        align-items: flex-start;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        transition: 0.3s;
+    :root {
+        --primary-green: #2f4f2f;
+        --bg-light: #f4f7f6;
+        --card-light: #ffffff;
+        --text-light: #333333;
+        --nav-bg: #1b1b1b;
+        --gold: #d4af37;
     }
 
-    .card:hover { transform: scale(1.02); }
+    body.dark-mode {
+        --bg-light: #121212;
+        --card-light: #1e1e1e;
+        --text-light: #ffffff;
+    }
+
+    body { 
+        font-family: 'Segoe UI', Tahoma, Geneva, sans-serif; 
+        background-color: var(--bg-light); 
+        margin: 0; 
+        color: var(--text-light); 
+        transition: 0.4s;
+    }
+
+    /* NAVBAR */
+    nav { 
+        background: var(--nav-bg); 
+        padding: 15px; 
+        text-align: center; 
+        position: sticky; 
+        top: 0; 
+        z-index: 1000; 
+    }
+    nav a { 
+        color: var(--gold); 
+        margin: 15px; 
+        text-decoration: none; 
+        font-weight: bold; 
+    }
+    nav a:hover { color: white; }
+
+    /* SEARCH */
+    .search-container {
+        text-align: center;
+        padding: 40px 20px 20px 20px;
+    }
+
+    #searchInput {
+        padding: 15px 25px;
+        width: 60%;
+        max-width: 600px;
+        border-radius: 30px;
+        border: 2px solid var(--primary-green);
+        background: var(--card-light);
+        color: var(--text-light);
+        outline: none;
+    }
+
+    h1 { text-align: center; color: var(--primary-green); margin-top: 20px; }
+    .subtitle { text-align: center; opacity: 0.7; margin-bottom: 30px; }
+
+    /* CARD */
+    .card {
+        background: var(--card-light);
+        margin: 20px auto;
+        width: 75%;
+        border-radius: 12px;
+        display: flex;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        border-left: 8px solid var(--primary-green);
+
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+        transform: scale(1.03);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    }
 
     .card img {
         width: 250px;
-        height: 160px;
+        height: 180px;
         object-fit: cover;
+        margin: 20px;
         border-radius: 8px;
-        margin-right: 25px;
+        cursor: pointer;
     }
 
-    .card-content { text-align: left; flex: 1; }
-    .card-content h3 { margin: 0 0 10px 0; color: #2f4f2f; font-size: 24px; }
-    
+    .card-content { padding: 20px; }
+    .card-content h3 { color: var(--primary-green); }
+
     .stats-list { 
         display: grid; 
         grid-template-columns: 1fr 1fr; 
         gap: 10px; 
         margin-top: 15px;
-        font-size: 0.9em;
-        background: #f9f9f9;
-        padding: 10px;
-        border-radius: 5px;
+        background: rgba(0,0,0,0.03);
+        padding: 15px;
+        border-radius: 8px;
     }
 
-    .stat-item { font-weight: bold; color: #555; }
-    .stat-item span { color: #2f4f2f; }
+    body.dark-mode .stats-list { background: rgba(255,255,255,0.05); }
 
-    /* Tabella Comparativa */
-    .table-container { width: 80%; margin: 50px auto; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-    th, td { padding: 12px; border-bottom: 1px solid #ddd; text-align: center; }
-    th { background-color: #2f4f2f; color: white; }
-    tr:hover { background-color: #f1f1f1; }
+    .stat-item span { color: var(--primary-green); }
+
+    /* TABELLA */
+    .table-container { 
+        width: 80%; 
+        margin: 50px auto; 
+        background: var(--card-light); 
+        padding: 20px; 
+        border-radius: 12px; 
+    }
+
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 12px; border-bottom: 1px solid rgba(0,0,0,0.1); text-align: center; }
+    th { background-color: var(--primary-green); color: white; }
+
+    /* DARK MODE BUTTON */
+    #themeBtn {
+        position: fixed;
+        bottom: 25px;
+        right: 25px;
+        background: var(--primary-green);
+        color: white;
+        border: none;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    #themeBtn:hover {
+        background: #1b1b1b;
+        transform: scale(1.1);
+    }
+
+    #noResults {
+        text-align: center;
+        display: none;
+        padding: 20px;
+    }
+
+    /* LIGHTBOX */
+    #lightbox {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.85);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+    }
+
+    #lightbox img {
+        max-width: 90%;
+        max-height: 90%;
+        border-radius: 10px;
+    }
+
+    @media (max-width: 800px) {
+        .card { flex-direction: column; text-align: center; }
+        .card img { width: 90%; }
+    }
 </style>
 </head>
 
@@ -73,84 +184,131 @@
     <a href="contatti.html">Contatti</a>
 </nav>
 
-<h1>Analisi delle Grandi Potenze</h1>
-<p class="subtitle">Dati aggiornati basati sugli ultimi report di spesa e capacità operativa globale.</p>
+<div class="search-container">
+    <input type="text" id="searchInput" placeholder="Cerca una nazione o una tecnologia..." onkeyup="searchFunction()">
+</div>
 
-<div class="card">
-    <img src="https://www.fortuneita.com/wp-content/uploads/2025/12/weinformweb_20251218132127224_5b1c4392608028e9d4e435a8e03a49c0.jpg" alt="USA Military">
+<h1>Analisi delle Grandi Potenze</h1>
+<p class="subtitle">Dati tattici aggiornati basati sulla capacità operativa globale.</p>
+
+<div id="noResults">Nessun risultato trovato per la tua ricerca.</div>
+
+<!-- USA -->
+<div class="card nation-card">
+    <img src="https://www.fortuneita.com/wp-content/uploads/2025/12/weinformweb_20251218132127224_5b1c4392608028e9d4e435a8e03a49c0.jpg" onclick="openImg(this.src)">
     <div class="card-content">
         <h3>Stati Uniti d'America (USA)</h3>
-        <p>Mantenendo il primato globale, gli USA puntano sulla proiezione di forza rapida. La loro superiorità risiede nella flotta di portaerei e nell'integrazione di sistemi satellitari avanzati per il comando e controllo.</p>
+        <p>Mantenendo il primato globale, gli USA puntano sulla proiezione di forza rapida. La loro superiorità risiede nella flotta di portaerei e nell'integrazione di sistemi satellitari.</p>
         <div class="stats-list">
             <div class="stat-item">Budget: <span>$850+ Miliardi</span></div>
             <div class="stat-item">Portaerei: <span>11 (Classe Nimitz/Ford)</span></div>
             <div class="stat-item">Caccia Stealth: <span>F-22 & F-35</span></div>
-            <div class="stat-item">Personale Attivo: <span>1.3 Milioni</span></div>
+            <div class="stat-item">Personale: <span>1.3 Milioni</span></div>
         </div>
     </div>
 </div>
 
-<div class="card">
-    <img src="https://media-assets.wired.it/photos/68b93b56c3d5afc90298c320/master/w_1024%2Cc_limit/2233519628" alt="China Military">
+<!-- CINA -->
+<div class="card nation-card">
+    <img src="https://media-assets.wired.it/photos/68b93b56c3d5afc90298c320/master/w_1024%2Cc_limit/2233519628" onclick="openImg(this.src)">
     <div class="card-content">
-        <h3>Cina (Repubblica Popolare Cinese)</h3>
-        <p>La Cina ha intrapreso il più grande programma di espansione navale della storia moderna. La strategia si concentra sul negare l'accesso alle acque regionali (A2/AD) e sullo sviluppo di missili ipersonici.</p>
+        <h3>Cina (Repubblica Popolare)</h3>
+        <p>La Cina ha intrapreso il più grande programma di espansione navale della storia moderna, puntando sui missili ipersonici e il negamento d'accesso acqueo.</p>
         <div class="stats-list">
-            <div class="stat-item">Budget: <span>$290+ Miliardi (Stima)</span></div>
-            <div class="stat-item">Navi da Guerra: <span>Oltre 350 unità</span></div>
-            <div class="stat-item">Focus: <span>Missili Ipersonici & AI</span></div>
-            <div class="stat-item">Personale Attivo: <span>2 Milioni</span></div>
+            <div class="stat-item">Budget: <span>$290+ Miliardi</span></div>
+            <div class="stat-item">Navi: <span>350+ unità</span></div>
+            <div class="stat-item">Focus: <span>Ipersonica & AI</span></div>
+            <div class="stat-item">Personale: <span>2 Milioni</span></div>
         </div>
     </div>
 </div>
 
-<div class="card">
-    <img src="https://media-assets.wired.it/photos/6273d6d0202ddb13a9ce379a/16:9/w_1280,c_limit/GettyImages-956548274.jpg" alt="Russia Military">
+<!-- RUSSIA -->
+<div class="card nation-card">
+    <img src="https://media-assets.wired.it/photos/6273d6d0202ddb13a9ce379a/16:9/w_1280,c_limit/GettyImages-956548274.jpg" onclick="openImg(this.src)">
     <div class="card-content">
         <h3>Federazione Russa</h3>
-        <p>Nonostante le sfide economiche, la Russia mantiene un vantaggio critico nei sistemi di difesa aerea (S-400/S-500) e nella triade nucleare. La loro ingegneria si concentra su mezzi corazzati pesanti e guerra elettronica.</p>
+        <p>Nonostante le sfide economiche, la Russia mantiene un vantaggio critico nei sistemi di difesa aerea (S-400/S-500) e nella triade nucleare.</p>
         <div class="stats-list">
-            <div class="stat-item">Testate Nucleari: <span>~5.500</span></div>
-            <div class="stat-item">Mezzi Corazzati: <span>Flotta Tank più numerosa</span></div>
-            <div class="stat-item">Focus: <span>Difesa Aerea & Sottomarini</span></div>
-            <div class="stat-item">Personale Attivo: <span>1.1 Milioni</span></div>
+            <div class="stat-item">Testate: <span>~5.800</span></div>
+            <div class="stat-item">Tank: <span>Flotta più numerosa</span></div>
+            <div class="stat-item">Focus: <span>EW & Difesa Aerea</span></div>
+            <div class="stat-item">Personale: <span>1.1 Milioni</span></div>
         </div>
     </div>
 </div>
 
+<!-- TABELLA -->
 <div class="table-container">
-    <h2 style="color: #2f4f2f; text-align: center;">Confronto Rapido</h2>
+    <h2 style="text-align:center; color: var(--primary-green);">Confronto Rapido</h2>
     <table>
-        <thead>
-            <tr>
-                <th>Nazione</th>
-                <th>Punto di Forza</th>
-                <th>Capacità Nucleare</th>
-                <th>Tecnologia Chiave</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><strong>USA</strong></td>
-                <td>Proiezione Globale</td>
-                <td>Elevatissima</td>
-                <td>B-21 Raider / Stealth</td>
-            </tr>
-            <tr>
-                <td><strong>Cina</strong></td>
-                <td>Quantità Navale</td>
-                <td>In Rapida Crescita</td>
-                <td>Missili DF-17 / Ipersonica</td>
-            </tr>
-            <tr>
-                <td><strong>Russia</strong></td>
-                <td>Difesa Strategica</td>
-                <td>Massima (Testate)</td>
-                <td>S-500 / Siluri Poseidon</td>
-            </tr>
-        </tbody>
+        <tr>
+            <th>Nazione</th>
+            <th>Punto di Forza</th>
+            <th>Capacità Nucleare</th>
+            <th>Tecnologia Chiave</th>
+        </tr>
+        <tr>
+            <td>USA</td>
+            <td>Logistica</td>
+            <td>Elevatissima</td>
+            <td>B-21 Raider</td>
+        </tr>
+        <tr>
+            <td>Cina</td>
+            <td>Navale</td>
+            <td>Crescente</td>
+            <td>DF-17 Ipersonico</td>
+        </tr>
+        <tr>
+            <td>Russia</td>
+            <td>Difesa</td>
+            <td>Massima</td>
+            <td>S-500 / Poseidon</td>
+        </tr>
     </table>
 </div>
+
+<button id="themeBtn" onclick="toggleTheme()">🌓</button>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" onclick="closeImg()">
+    <img id="lightboxImg">
+</div>
+
+<script>
+function searchFunction() {
+    let input = document.getElementById('searchInput').value.toLowerCase();
+    let cards = document.getElementsByClassName('nation-card');
+    let noResults = document.getElementById('noResults');
+    let found = false;
+
+    for (let i = 0; i < cards.length; i++) {
+        let content = cards[i].innerText.toLowerCase();
+        if (content.includes(input)) {
+            cards[i].style.display = "flex";
+            found = true;
+        } else {
+            cards[i].style.display = "none";
+        }
+    }
+
+    noResults.style.display = found ? "none" : "block";
+}
+
+function toggleTheme() {
+    document.body.classList.toggle('dark-mode');
+}
+
+function openImg(src){
+    document.getElementById("lightboxImg").src = src;
+    document.getElementById("lightbox").style.display = "flex";
+}
+
+function closeImg(){
+    document.getElementById("lightbox").style.display = "none";
+}
+</script>
 
 </body>
 </html>
