@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>Tattiche Moderne - Dettagli</title>
+<link rel="icon" type="image/png" href="https://it.vecteezy.com/arte-vettoriale/19847032-icona-vettore-logo-arma-automatica-armi-da-battaglia-pistole-fucili-illustrazione-di-armi-e-militari">
+
+<style>
+:root {
+    --primary-green: #2f4f2f;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #fdfdfd;
+    text-align: center;
+    margin: 0;
+    color: #333;
+    transition: 0.4s;
+}
+
+body.dark-mode {
+    background: #121212;
+    color: #ffffff;
+}
+
+nav { background: #1b1b1b; padding: 15px; }
+nav a { color: #d4af37; margin: 15px; text-decoration: none; font-weight: bold; }
+nav a:hover { color: white; }
+
+.header-section {
+    background-color: #2f4f2f;
+    color: white;
+    padding: 40px 20px;
+    margin-bottom: 30px;
+}
+
+button {
+    background: #d4af37;
+    color: #1b1b1b;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+button:hover {
+    background: #1b1b1b;
+    color: #d4af37;
+    transform: translateY(-3px);
+}
+
+#extra {
+    display: none;
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    text-align: left;
+}
+
+body.dark-mode #extra {
+    background: #1e1e1e;
+}
+
+.tattica-box {
+    margin-bottom: 30px;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.tattica-box h3 { color: #2f4f2f; margin-top: 0; }
+
+.main-img {
+    display: block;
+    margin: 20px auto;
+    border-radius: 10px;
+    width: 60%;
+    max-width: 500px;
+    height: auto;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.main-img:hover { transform: scale(1.03); }
+
+.badge {
+    background: #2f4f2f;
+    color: white;
+    padding: 5px 10px;
+    font-size: 0.8em;
+    border-radius: 5px;
+    text-transform: uppercase;
+}
+
+/* LIGHTBOX */
+#lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+#lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+}
+
+/* 🔒 PULSANTE SEGRETO */
+#secretBtn {
+    display: none;
+    margin: 80px auto;
+    background: #2f4f2f;
+    color: #d4af37;
+    border: none;
+    padding: 14px 30px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#themeBtn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: #2f4f2f;
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+
+    padding: 0;              /* ✅ fondamentale */
+    display: flex;           /* centra icona */
+    align-items: center;
+    justify-content: center;
+}
+#themeBtn:hover {
+    background: #1b1b1b;
+    transform: scale(1.1);
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="potenze.html">Potenze</a>
+    <a href="mezzi.html">Mezzi</a>
+    <a href="tattiche.html">Tattiche</a>
+    <a href="contatti.html">Contatti</a>
+</nav>
+
+<div class="header-section">
+    <h1>Analisi Tattiche Moderne</h1>
+    <p>Il campo di battaglia è cambiato: scopri come la tecnologia ha riscritto le regole della guerra.</p>
+</div>
+
+<button onclick="toggle()">Esplora i Dettagli Tattici</button>
+
+<div id="extra">
+
+    <div class="tattica-box">
+        <h3><span class="badge">Droni</span> Sistemi a Pilotaggio Remoto (UAV)</h3>
+        <p>L'uso dei droni ha rivoluzionato la ricognizione e l'attacco di precisione. Consentono di monitorare il territorio per ore senza mettere a rischio la vita dei piloti e possono colpire obiettivi sensibili con una precisione millimetrica.</p>
+    </div>
+
+    <div class="tattica-box">
+        <h3><span class="badge">Cyber</span> Guerra Cibernetica</h3>
+        <p>Le battaglie non si combattono più solo nel mondo fisico. Il Cyber Warfare punta a disabilitare le infrastrutture critiche del nemico utilizzando attacchi hacker.</p>
+    </div>
+
+    <div class="tattica-box">
+        <h3><span class="badge">EW</span> Guerra Elettronica</h3>
+        <p>La Electronic Warfare consiste nel disturbare radar e comunicazioni satellitari. Include tecniche come il jamming (disturbo dei segnali), lo spoofing (inganno dei sistemi nemici) e l'intercettazione delle comunicazioni.</p>
+        <p>È fondamentale per ottenere superiorità informativa sul campo di battaglia, rendendo ciechi e sordi i sistemi nemici. Viene utilizzata per proteggere le proprie forze e compromettere droni, missili guidati e sistemi radar avversari.</p>
+    </div>
+
+    <img src="https://media-assets.wired.it/photos/615f3b9438b9988b82ca1645/master/w_1600%2Cc_limit/1531293225_Drone-MQ-9-Reaper-1050x590.jpg"
+         class="main-img"
+         onclick="openImg(this.src)">
+
+    <p style="text-align:center; font-style:italic; color:#777;">
+        Illustrazione: Un drone MQ-9 Reaper pronto per una missione di sorveglianza.
+    </p>
+</div>
+
+<!-- 🔒 PULSANTE SEGRETO IN FONDO -->
+<button id="secretBtn" onclick="openSecret()">🔒 Accesso Segreto</button>
+
+<div id="lightbox" onclick="closeImg()">
+    <img id="lightboxImg">
+</div>
+
+<!-- 🌙 DARK BUTTON -->
+<button id="themeBtn" onclick="toggleTheme()">🌓</button>
+
+<script>
+
+let aperto = false;
+
+function toggle(){
+    let x = document.getElementById("extra");
+    let btn = document.getElementById("secretBtn");
+
+    if (x.style.display === "none" || x.style.display === "") {
+        x.style.display = "block";
+        x.scrollIntoView({ behavior: "smooth" });
+
+        aperto = true;
+        btn.style.display = "block";
+
+    } else {
+        x.style.display = "none";
+    }
+}
+
+function openImg(src){
+    document.getElementById("lightboxImg").src = src;
+    document.getElementById("lightbox").style.display = "flex";
+}
+
+function closeImg(){
+    document.getElementById("lightbox").style.display = "none";
+}
+
+/* 🔒 SEGRETO */
+function openSecret(){
+    document.getElementById("lightboxImg").src =
+        "https://i.postimg.cc/fyFL4jpV/Whats-App-Image-2026-04-22-at-20-40-54.jpg";
+    document.getElementById("lightbox").style.display = "flex";
+}
+
+/* 🌙 DARK MODE */
+function toggleTheme() {
+    document.body.classList.toggle('dark-mode');
+}
+
+</script>
+
+</body>
+</html>
